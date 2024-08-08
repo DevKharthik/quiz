@@ -1,10 +1,9 @@
-FROM httpd:latest
+# Use the official httpd image from the Docker Hub
+FROM httpd:alpine
 
-# Install git
-RUN apt-get update && apt-get install -y git
+# Copy the HTML files into the Apache document root
+COPY . /usr/local/apache2/htdocs/
 
-# Clone the repository
-RUN git clone https://github.com/DevKharthik/quiz.git
-
-# Copy the files from the cloned repository to the Apache document root
-COPY ./quiz /usr/local/apache2/htdocs/
+# Expose port 80
+EXPOSE 80
+    
